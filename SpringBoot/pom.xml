@@ -90,12 +90,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-<<<<<<< HEAD
-=======
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-batch</artifactId>
-		</dependency>
 
 		<!-- MySQL JDBC connector -->
 		<!-- <dependency> -->
@@ -110,7 +104,6 @@
 			<version>1.5.7</version>
 		</dependency>
 
->>>>>>> 11da8dec15aa30dc69d526daedcc3db87e0da66f
 	</dependencies>
 
 	<build>
