@@ -24,7 +24,7 @@ public class BatchServicesImpl implements BatchServices {
 
 	@Override
 	public void executeBatchTest() throws JobExecutionAlreadyRunningException, JobRestartException,
-			JobInstanceAlreadyCompleteException, JobParametersInvalidException {
+		JobInstanceAlreadyCompleteException, JobParametersInvalidException {
 		JobLauncher jobLauncher = appContext.getBean(JobLauncher.class);
 		Job addNewPodcastJob = appContext.getBean("New Book Job", Job.class);
 		JobParameters jobParameters = new JobParametersBuilder().addDate("date", new Date()).toJobParameters();
