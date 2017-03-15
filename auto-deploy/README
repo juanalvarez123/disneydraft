@@ -1,0 +1,17 @@
+
+Hello !!
+
+This is a small help guide to you to undestand what this scripts does.
+
+Usage:
+
+sh deploy.sh <command>
+
+Commands:
+	deploy -----> Deploy the database and spring boot rest service
+	undeploy ---> Undeploy the database and spring boot rest service
+	start ------> Start the database and spring boot rest service
+	stop -------> Stop the database and spring boot rest service
+	help -------> This help (?)
+	
+Enjoy it !!
