@@ -27,7 +27,8 @@ function undeploy_data_base {
 function deploy_data_base {
 	
 	docker pull mariadb
-	docker run --name mariadb -e MYSQL_ROOT_PASSWORD=12345 -p 13306:3306 -d mariadb:latest	
+	docker run --name mariadb -e MYSQL_ROOT_PASSWORD=12345 -p 13306:3306 -d mariadb
+	# -p 13306:3306
 	}
 
 function data_base {
