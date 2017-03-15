@@ -40,7 +40,6 @@ function deploy_spring_boot {
 	# 2) Start the container
 	cd applications/spring-boot/
 	docker build -t spring-boot .
-	#docker run -it --link mariadb:mariadb -d --name spring-boot spring-boot
 	docker run --link mariadb --name spring-boot -p 19090:9090 spring-boot
 
 	cd $pwd
