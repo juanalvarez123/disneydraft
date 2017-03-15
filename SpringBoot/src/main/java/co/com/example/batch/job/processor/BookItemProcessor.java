@@ -2,16 +2,16 @@ package co.com.example.batch.job.processor;
 
 import org.springframework.batch.item.ItemProcessor;
 
-import co.com.example.model.Book;
+import co.com.example.model.eBook;
 
-public class BookItemProcessor implements ItemProcessor<Book, Book> {
+public class BookItemProcessor implements ItemProcessor<eBook, eBook> {
 
 	@Override
-	public Book process(final Book person) throws Exception {
+	public eBook process(final eBook book) throws Exception {
 		// final String firstName = person.getFirstName().toUpperCase();
 		// final String lastName = person.getLastName().toUpperCase();
 
-		final Book transformedBook = new Book();
+		final eBook transformedBook = book;
 
 		return transformedBook;
 	}
