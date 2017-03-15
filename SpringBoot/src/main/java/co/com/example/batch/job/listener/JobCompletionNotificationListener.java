@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
-import co.com.example.model.Book;
+import co.com.example.model.eBook;
 
 @Component
 public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
@@ -27,16 +27,16 @@ public class JobCompletionNotificationListener extends JobExecutionListenerSuppo
 	@Override
 	public void afterJob(JobExecution jobExecution) {
 //		 if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
-//		 List<Book> results = jdbcTemplate.query("SELECT first_name, last_name
+//		 List<eBook> results = jdbcTemplate.query("SELECT first_name, last_name
 //		 FROM people",
-//		 new RowMapper<Book>() {
+//		 new RowMapper<eBook>() {
 //		 @Override
-//		 public Book mapRow(ResultSet rs, int row) throws SQLException {
-//		 return new Book();
+//		 public eBook mapRow(ResultSet rs, int row) throws SQLException {
+//		 return new eBook();
 //		 }
 //		 });
 //		
-//		 for (Book book : results) {
+//		 for (eBook book : results) {
 //		
 //		 }
 //		

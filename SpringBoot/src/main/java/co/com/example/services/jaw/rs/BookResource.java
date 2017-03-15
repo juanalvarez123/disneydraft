@@ -1,6 +1,7 @@
 package co.com.example.services.jaw.rs;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -12,11 +13,16 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.core.Response.Status;
 
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.com.example.dao.CategoryDAO;
 import co.com.example.model.Book;
+import co.com.example.services.BatchServices;
 import co.com.example.utils.ResourceLink;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -34,7 +40,10 @@ public class BookResource {
 	UriInfo uriInfo;
 
 	@Autowired
-	public CategoryDAO categoryDAO;
+	private CategoryDAO categoryDAO;
+	
+	@Autowired
+	private BatchServices batchServices;
 
 	@GET
 	@Path("/book/{id}")
@@ -68,11 +77,21 @@ public class BookResource {
 		return book;
 	}
 	
-	@PUT
+	@POST
 	@Path("/book/batch")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response executeBatch() {
-
+		try {
+			batchServices.executeBatchTest();
+		} catch (JobExecutionAlreadyRunningException e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("There was an error on the execution.").build();
+		} catch (JobRestartException e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("There was an error on the execution.").build();
+		} catch (JobInstanceAlreadyCompleteException e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("There was an error on the execution.").build();
+		} catch (JobParametersInvalidException e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("There was an error on the execution.").build();
+		}
 		return Response.status(Status.ACCEPTED).entity("The task has ben launched.").build(); 
 	}
 }
